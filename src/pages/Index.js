@@ -46,10 +46,10 @@ const Index = () => {
                     <Flex flexDir={"column"} justifyContent={"space-between"} alignItems={"center"} h="100%">
                         <Flex flexDir={"column"} justifyContent={"center"} alignItems={"center"}>
                             <Icon as={FaShoppingBasket} w={24} h={24} mb="10px" color="white"/>
-                            <Heading fontSize="28px" mb="10px" color="white">Material</Heading>
+                            <Heading fontSize="28px" mb="10px" color="white">Ingredients</Heading>
                             <Text mb="10px" color="white" textAlign={"center"} >Bagian ini digunakan untuk menampilkan daftar bahan baku, membuat bahan baku baru, dan menampilkan detail bahan baku</Text>
                         </Flex>
-                        <Link to="/material">
+                        <Link to="/ingredients">
                             <Button backgroundColor="#FFFFFF" color="#888888" border="1px solid #888888" _hover={{backgroundColor:"#3D56B2", color:"#FFFFFF", border:"1px solid #FFFFFF"}} _active={{backgroundColor:"#3D56B2", color:"#FFFFFF", border:"1px solid #FFFFFF"}}>
                                 Kunjungi Sekarang
                             </Button>

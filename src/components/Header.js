@@ -43,15 +43,15 @@ export const Header = () => {
                             Recipe
                         </Button>
                     </Link>
-                    <Link to="/material">
+                    <Link to="/ingredients">
                         <Button
                             as="a"
                             variant="ghost"
-                            aria-label="Material"
+                            aria-label="Ingredients"
                             my={5}
                             w="100%"
                         >
-                            Material
+                            Ingredients
                         </Button>
                     </Link>
                     <Link to="/request">
@@ -148,15 +148,15 @@ export const Header = () => {
                         Recipe
                     </Button>
                 </Link>
-                <Link to="/material">
+                <Link to="/ingredients">
                     <Button
                         as="a"
                         variant="ghost"
-                        aria-label="Material"
+                        aria-label="Ingredients"
                         my={5}
                         w="100%"
                     >
-                        Material
+                        Ingredients
                     </Button>
                 </Link>
                 <Link to="/request">

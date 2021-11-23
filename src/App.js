@@ -9,7 +9,7 @@ import theme from "./theme";
 import Index from "./pages/Index"
 import Recipe from "./pages/Recipe"
 import Request from "./pages/Request"
-import Material from "./pages/Material"
+import Ingredient from "./pages/Ingredient"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 function App() {
@@ -29,7 +29,7 @@ const Navigation = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/recipe" element={<Recipe/>} />
-      <Route path="/material" element={<Material />} />
+      <Route path="/ingredients" element={<Ingredient />} />
       <Route path="/request" element={<Request/>} />
     </Routes>
   )
