@@ -35,7 +35,7 @@ const Index = () => {
                             <Text mb="10px" color="white" textAlign={"center"} >Bagian ini digunakan untuk menampilkan daftar resep, membuat resep baru, dan menampilkan detail resep</Text>
                         </Flex>
                         
-                        <Link to="/recipe">
+                        <Link to="/recipes">
                             <Button backgroundColor="#FFFFFF" color="#888888" border="1px solid #888888" _hover={{backgroundColor:"#3D56B2", color:"#FFFFFF", border:"1px solid #FFFFFF"}} _active={{backgroundColor:"#3D56B2", color:"#FFFFFF", border:"1px solid #FFFFFF"}}>
                                 Kunjungi Sekarang
                             </Button>

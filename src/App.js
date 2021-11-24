@@ -7,6 +7,7 @@ import {
 import {Routes, Route, BrowserRouter as Router, Redirect} from "react-router-dom"
 import theme from "./theme";
 import Index from "./pages/Index"
+import Recipes from "./pages/Recipes"
 import Recipe from "./pages/Recipe"
 import Request from "./pages/Request"
 import Ingredient from "./pages/Ingredient"
@@ -28,6 +29,7 @@ const Navigation = () => {
       <Route path="/" element={<Index />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/recipes" element={<Recipes/>} />
       <Route path="/recipe" element={<Recipe/>} />
       <Route path="/ingredients" element={<Ingredient />} />
       <Route path="/request" element={<Request/>} />

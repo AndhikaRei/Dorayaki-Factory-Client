@@ -32,7 +32,7 @@ export const Header = () => {
                     </Button>
                 </Link>
                 <Flex display={['none','none','flex', 'flex']}>
-                    <Link to="/recipe">
+                    <Link to="/recipes">
                         <Button
                             as="a"
                             variant="ghost"
@@ -137,7 +137,7 @@ export const Header = () => {
             </Flex>
             <Flex flexDir={"column"} align={"center"} >
                 <Text fontWeight="900" fontSize={"24px"} mb="20px">Hi, Anantha</Text>
-                <Link to="/recipe">
+                <Link to="/recipes">
                     <Button
                         as="a"
                         variant="ghost"

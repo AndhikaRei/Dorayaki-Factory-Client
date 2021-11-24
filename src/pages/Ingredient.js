@@ -90,11 +90,16 @@ const Ingredient = () => {
 
     useEffect(() => {
         // TODO: set header for auth
-        axios.get(`http://localhost:5000/api/v1/ingredients`)
-            .then(res => {
-                const resingredients = res.data;
-                setIngredients(resingredients);
-            })
+        axios.request({
+            method:'GET',
+            url: `http://localhost:4000/api/v1/ingredients`,
+            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzc0NzM1M30.iGp3F7CvLV-0B_BCHGeSwkgkq5wYNua42WSMTzD5_z8'},
+            data:{}
+        }).then(res => {
+            const resingredients = res.data;
+            setIngredients(resingredients);
+        })
+            
     }, []);
 
     // TODO: add ingredient
