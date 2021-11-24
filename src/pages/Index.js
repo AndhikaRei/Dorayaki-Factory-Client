@@ -17,7 +17,7 @@ import { BsCardChecklist } from "react-icons/bs";
 import { Link } from "react-router-dom"
 
 const Index = () => {
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode} = useColorMode()
     const isDark = colorMode === 'dark'
     return(
     <Container>

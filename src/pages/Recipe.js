@@ -5,19 +5,18 @@ import {
     Center,
     Heading,
     Flex,
-    Icon,
-    Button,
     useColorMode,
     Table,
     Thead,
     Tbody,
     Tr,
     Th,
-    Td
+    Td, 
+    Spinner
 } from '@chakra-ui/react'
 import { Container } from '../components/Container'
 import { Header } from '../components/Header'
-import {Link, useLocation} from "react-router-dom"
+import {useLocation} from "react-router-dom"
 import axios from "axios"
 
 const IngredientTableItem = (props) => {
@@ -35,7 +34,6 @@ const Recipe = () => {
     }
     let query = useQuery();
     const id = query.get('id');
-    console.log(id)
     const [recipe, setRecipe] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
@@ -51,11 +49,21 @@ const Recipe = () => {
         })
     }, [id]);
 
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode } = useColorMode()
     const isDark = colorMode === 'dark'
     return(
     <Container>
         <Header />
+        {isLoading &&
+        <Center width="100vw" height="100vh" bg="transparent">
+        <Spinner
+            thickness="5px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+        />
+        </Center>}
         {!isLoading && 
         <Box mt="50px" minH={"80vh"} maxW={"80vw"}>
             <Flex flexDir={"column"} justifyContent={"center"} alignItems={"center"}>
@@ -71,7 +79,7 @@ const Recipe = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {recipe.ingredients.map((ing) => <IngredientTableItem key={ing.id} ingredient={ing}/>)}
+                        {recipe.ingredients.map((ing, index) => <IngredientTableItem key={index} ingredient={ing}/>)}
                     </Tbody>
                 </Table>
             </Center>

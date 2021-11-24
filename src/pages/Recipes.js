@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {
-    Text,
     Box,
     Center,
     Heading,
     Flex,
-    Icon,
     Button,
     useColorMode,
     Table,
@@ -13,7 +11,8 @@ import {
     Tbody,
     Tr,
     Th,
-    Td
+    Td,
+    Spinner,
 } from '@chakra-ui/react'
 import { Container } from '../components/Container'
 import { Header } from '../components/Header'
@@ -21,7 +20,7 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 
 const RecipesTableItem = (props) => {
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode } = useColorMode()
     const isDark = colorMode === 'dark'
     return (
         <Tr>
@@ -48,7 +47,7 @@ const RecipesTableItem = (props) => {
 
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         axios.request({
             method:'GET',
@@ -58,15 +57,27 @@ const Recipes = () => {
         }).then(res => {
             const resRecipes = res.data;
             setRecipes(resRecipes);
+            setIsLoading(false)
         })
             
     }, []);
 
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode } = useColorMode()
     const isDark = colorMode === 'dark'
     return(
     <Container>
         <Header />
+        {isLoading &&
+        <Center width="100vw" height="100vh" bg="transparent">
+        <Spinner
+            thickness="5px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+        />
+        </Center>}
+        {!isLoading &&
         <Box mt="50px" minH={"80vh"} maxW={"80vw"}>
             <Flex flexDir={"column"} justifyContent={"center"} alignItems={"center"}>
                 <Heading fontSize="48px" textAlign={"center"}  mb="30px">DoraYummy Recipes</Heading>
@@ -98,7 +109,7 @@ const Recipes = () => {
                     </Tbody>
                 </Table>
             </Center>
-        </Box>
+        </Box>}
     </Container>
     )
 }
