@@ -10,7 +10,7 @@ import Index from "./pages/Index"
 import Recipes from "./pages/Recipes"
 import Recipe from "./pages/Recipe"
 import RecipeForm from "./pages/RecipeForm"
-import Request from "./pages/Request"
+import Requests from "./pages/Requests"
 import Ingredient from "./pages/Ingredient"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
@@ -34,7 +34,7 @@ const Navigation = () => {
       <Route path="/recipe" element={<Recipe/>} />
       <Route path="/add-recipe" element={<RecipeForm />} />
       <Route path="/ingredients" element={<Ingredient />} />
-      <Route path="/request" element={<Request/>} />
+      <Route path="/requests" element={<Requests />} />
     </Routes>
   )
 }

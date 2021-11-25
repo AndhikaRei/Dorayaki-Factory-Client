@@ -50,7 +50,7 @@ const IngredientTableItem = (props) => {
                 axios.request({
                     method:'PATCH',
                     url: `http://localhost:4000/api/v1/ingredients/${id}`,
-                    headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ4MmExNjY5LTEyOTUtNDU4Ni1hYTVjLWYyYjBhYTQ1MGM5YSIsInVzZXJuYW1lIjoicmV5aGFuZW15ciIsImlhdCI6MTYzNzc3MzUxOX0.0DLyu0Xx-k0QVpcDNdbhkiRkb_ockePQbItypvfzi_Y'},
+                    headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzg3MzQ2NX0.yEANojUQIt0rmUBmFnlArH1rlKYXx5hlNXarf659EKs'},
                     data:  {
                         name : nameInput,
                         stock : stockInput
@@ -63,6 +63,7 @@ const IngredientTableItem = (props) => {
                         title: res.data,
                         description: "Factory successfully updated ingredient in the database.",
                         status: "success",
+                        position: "top",
                         duration: 9000,
                         isClosable: true,
                     })
@@ -72,6 +73,7 @@ const IngredientTableItem = (props) => {
                         title: "Failed to update ingredient.",
                         description: err.response.data.error.errors[0].message,
                         status: "error",
+                        position: "top",
                         duration: 9000,
                         isClosable: true,
                     })
@@ -81,6 +83,7 @@ const IngredientTableItem = (props) => {
                     title: "Failed to update ingredient.",
                     description: "Ingredient already exists.",
                     status: "error",
+                    position: "top",
                     duration: 9000,
                     isClosable: true,
                 })
@@ -90,6 +93,7 @@ const IngredientTableItem = (props) => {
                 title: "Failed to update ingredient.",
                 description: "Name and stock cannot be empty.",
                 status: "error",
+                position: "top",
                 duration: 9000,
                 isClosable: true,
             })
@@ -156,7 +160,7 @@ const Ingredient = () => {
         axios.request({
             method:'GET',
             url: `http://localhost:4000/api/v1/ingredients`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ4MmExNjY5LTEyOTUtNDU4Ni1hYTVjLWYyYjBhYTQ1MGM5YSIsInVzZXJuYW1lIjoicmV5aGFuZW15ciIsImlhdCI6MTYzNzc3MzUxOX0.0DLyu0Xx-k0QVpcDNdbhkiRkb_ockePQbItypvfzi_Y'},
+            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzg3MzQ2NX0.yEANojUQIt0rmUBmFnlArH1rlKYXx5hlNXarf659EKs'},
             data:{}
         }).then(res => {
             const resingredients = res.data;
@@ -173,7 +177,7 @@ const Ingredient = () => {
                 axios.request({
                     method:'POST',
                     url: `http://localhost:4000/api/v1/ingredients`,
-                    headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ4MmExNjY5LTEyOTUtNDU4Ni1hYTVjLWYyYjBhYTQ1MGM5YSIsInVzZXJuYW1lIjoicmV5aGFuZW15ciIsImlhdCI6MTYzNzc3MzUxOX0.0DLyu0Xx-k0QVpcDNdbhkiRkb_ockePQbItypvfzi_Y'},
+                    headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzg3MzQ2NX0.yEANojUQIt0rmUBmFnlArH1rlKYXx5hlNXarf659EKs'},
                     data:  newIngre
                 }).then(res => {
                     console.log(res.data);
@@ -182,6 +186,7 @@ const Ingredient = () => {
                         title: "Ingredient successfully added.",
                         description: "Factory successfully added new ingredient to the database.",
                         status: "success",
+                        position: "top",
                         duration: 9000,
                         isClosable: true,
                     })
@@ -191,6 +196,7 @@ const Ingredient = () => {
                         title: "Failed to add ingredient.",
                         description: err.response.data.error.errors[0].message,
                         status: "error",
+                        position: "top",
                         duration: 9000,
                         isClosable: true,
                     })
@@ -200,6 +206,7 @@ const Ingredient = () => {
                     title: "Failed to add ingredient.",
                     description: "Ingredient already exists.",
                     status: "error",
+                    position: "top",
                     duration: 9000,
                     isClosable: true,
                 })
@@ -232,7 +239,7 @@ const Ingredient = () => {
         {!isLoading &&
         <Box mt="50px" minH={"80vh"}>
             <Center mb="30px">
-                <Heading fontSize="48px" textAlign={"center"}>Ingredients Page</Heading>
+                <Heading fontSize="48px" textAlign={"center"}>DoraYummy Ingredients</Heading>
             </Center>
             <Stack spacing={5}>
                 <HStack >

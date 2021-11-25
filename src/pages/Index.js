@@ -63,7 +63,7 @@ const Index = () => {
                             <Heading fontSize="28px" mb="10px" color="white">Request</Heading>
                             <Text mb="10px" color="white" textAlign={"center"} >Bagian ini digunakan untuk menerima(accept) / menolak(decline) request</Text>
                         </Flex>
-                        <Link to="/request">
+                        <Link to="/requests">
                             <Button backgroundColor="#FFFFFF" color="#888888" border="1px solid #888888" _hover={{backgroundColor:"#3D56B2", color:"#FFFFFF", border:"1px solid #FFFFFF"}} _active={{backgroundColor:"#3D56B2", color:"#FFFFFF", border:"1px solid #FFFFFF"}}>
                                 Kunjungi Sekarang
                             </Button>

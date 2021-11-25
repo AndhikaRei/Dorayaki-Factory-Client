@@ -54,7 +54,7 @@ export const Header = () => {
                             Ingredients
                         </Button>
                     </Link>
-                    <Link to="/request">
+                    <Link to="/requests">
                         <Button
                             as="a"
                             variant="ghost"
@@ -159,7 +159,7 @@ export const Header = () => {
                         Ingredients
                     </Button>
                 </Link>
-                <Link to="/request">
+                <Link to="requests">
                     <Button
                         as="a"
                         variant="ghost"

@@ -74,16 +74,18 @@ const RecipeForm = () => {
     const isDark = colorMode === 'dark'
 
     function handleNewIngredient(){
-        if (recipeIngredients.filter(e => e.ingredient === selectedIngredient).length > 0) {
-            let ingIndex = recipeIngredients.findIndex((x => x.ingredient === selectedIngredient));
-            recipeIngredients[ingIndex].count = parseInt(recipeIngredients[ingIndex].count)+parseInt(count)
-            setRefreshTable(!refreshTable)
-        }else{
-            const newIngre = {ingredient : selectedIngredient, count:parseInt(count)};
-            recipeIngredients.push(newIngre);
-            setRefreshTable(!refreshTable)
+        if(selectedIngredient !== ''){
+            if (recipeIngredients.filter(e => e.ingredient === selectedIngredient).length > 0) {
+                let ingIndex = recipeIngredients.findIndex((x => x.ingredient === selectedIngredient));
+                recipeIngredients[ingIndex].count = parseInt(recipeIngredients[ingIndex].count)+parseInt(count)
+                setRefreshTable(!refreshTable)
+            }else{
+                const newIngre = {ingredient : selectedIngredient, count:parseInt(count)};
+                recipeIngredients.push(newIngre);
+                setRefreshTable(!refreshTable)
+            }
+            setRecipeIngredients(recipeIngredients)
         }
-        setRecipeIngredients(recipeIngredients)
     }
 
     function deleteIngredient(id){
@@ -109,11 +111,19 @@ const RecipeForm = () => {
                 title: "Recipe successfully added.",
                 description: "Factory successfully added new recipe to the database.",
                 status: "success",
+                position: "top",
                 duration: 9000,
                 isClosable: true,
               })
         }).catch((err)=>{
-            console.log(err);
+            toast({
+                title: "Failed to Add Recipe",
+                description: err.response.data.error,
+                status: "error",
+                position: "top",
+                duration: 9000,
+                isClosable: true,
+              })
         })
     }
 
