@@ -28,6 +28,7 @@ import {
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons'
 import { Container } from '../components/Container'
 import { Header } from '../components/Header'
+import Cookies from "js-cookie";
 import axios from "axios";
 
 const IngredientTableItem = (props) => {
@@ -49,8 +50,8 @@ const IngredientTableItem = (props) => {
             if (!ingredients.find(el => el.name === nameInput)) {
                 axios.request({
                     method:'PATCH',
-                    url: `http://localhost:4000/api/v1/ingredients/${id}`,
-                    headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzg3MzQ2NX0.yEANojUQIt0rmUBmFnlArH1rlKYXx5hlNXarf659EKs'},
+                    url: `${process.env.REACT_APP_API_URL}ingredients/${id}`,
+                    headers:{'auth-token':Cookies.get('user')},
                     data:  {
                         name : nameInput,
                         stock : stockInput
@@ -159,8 +160,8 @@ const Ingredient = () => {
         // TODO: set header for auth
         axios.request({
             method:'GET',
-            url: `http://localhost:4000/api/v1/ingredients`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzg3MzQ2NX0.yEANojUQIt0rmUBmFnlArH1rlKYXx5hlNXarf659EKs'},
+            url: `${process.env.REACT_APP_API_URL}ingredients`,
+            headers:{'auth-token':Cookies.get('user')},
             data:{}
         }).then(res => {
             const resingredients = res.data;
@@ -176,8 +177,8 @@ const Ingredient = () => {
             if (!ingredients.find(el => el.name === newIngredientName)) {
                 axios.request({
                     method:'POST',
-                    url: `http://localhost:4000/api/v1/ingredients`,
-                    headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzg3MzQ2NX0.yEANojUQIt0rmUBmFnlArH1rlKYXx5hlNXarf659EKs'},
+                    url: `${process.env.REACT_APP_API_URL}ingredients`,
+                    headers:{'auth-token':Cookies.get('user')},
                     data:  newIngre
                 }).then(res => {
                     console.log(res.data);

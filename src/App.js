@@ -16,6 +16,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Cookies from "js-cookie";
 import AuthApi from './AuthApi';
+require('dotenv').config()
 
 function App() {
   const [auth, setAuth] = useState(false)

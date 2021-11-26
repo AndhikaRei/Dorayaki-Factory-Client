@@ -35,7 +35,7 @@ const Register= () => {
         setIsLoading(false)
         axios.request({
             method:'POST',
-            url: `http://localhost:4000/api/v1/auth/register`,
+            url: `${process.env.REACT_APP_API_URL}auth/register`,
             headers:{},
             data:  {
                 email : email,

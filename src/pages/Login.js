@@ -38,7 +38,7 @@ const Login = () => {
         setIsLoading(false)
         axios.request({
             method:'POST',
-            url: `http://localhost:4000/api/v1/auth/login`,
+            url: `${process.env.REACT_APP_API_URL}auth/login`,
             headers:{},
             data:  {
                 username : username,

@@ -29,6 +29,7 @@ import {
 import { Container } from '../components/Container'
 import { Header } from '../components/Header'
 import axios from "axios"
+import Cookies from "js-cookie";
 
 const IngredientTableItem = ( {key, index, ingredient, onDeleteIngridient}) => {
     const { colorMode } = useColorMode()
@@ -61,8 +62,8 @@ const RecipeForm = () => {
     useEffect(() => {
         axios.request({
             method:'GET',
-            url: `http://localhost:4000/api/v1/ingredients`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzc0NzM1M30.iGp3F7CvLV-0B_BCHGeSwkgkq5wYNua42WSMTzD5_z8'},
+            url: `${process.env.REACT_APP_API_URL}ingredients`,
+            headers:{'auth-token':Cookies.get('user')},
             data:{}
         }).then(res => {
             setIngredients(res.data);
@@ -98,8 +99,8 @@ const RecipeForm = () => {
         console.log(recipeIngredients)
         axios.request({
             method:'POST',
-            url: `http://localhost:4000/api/v1/recipes`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzc0NzM1M30.iGp3F7CvLV-0B_BCHGeSwkgkq5wYNua42WSMTzD5_z8'},
+            url: `${process.env.REACT_APP_API_URL}recipes`,
+            headers:{'auth-token':Cookies.get('user')},
             data:  {
                 name : name,
                 ingredients : recipeIngredients

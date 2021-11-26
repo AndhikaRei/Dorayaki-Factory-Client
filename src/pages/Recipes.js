@@ -18,6 +18,7 @@ import { Container } from '../components/Container'
 import { Header } from '../components/Header'
 import { Link } from "react-router-dom"
 import axios from "axios"
+import Cookies from "js-cookie";
 
 const RecipesTableItem = (props) => {
     const { colorMode } = useColorMode()
@@ -51,8 +52,8 @@ const Recipes = () => {
     useEffect(() => {
         axios.request({
             method:'GET',
-            url: `http://localhost:4000/api/v1/recipes`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzc0NzM1M30.iGp3F7CvLV-0B_BCHGeSwkgkq5wYNua42WSMTzD5_z8'},
+            url: `${process.env.REACT_APP_API_URL}recipes`,
+            headers:{'auth-token':Cookies.get('user')},
             data:{}
         }).then(res => {
             const resRecipes = res.data;

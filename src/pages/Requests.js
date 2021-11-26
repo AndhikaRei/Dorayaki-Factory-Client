@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {
-    Text,
     Box,
     Center,
     Heading,
     Flex,
     IconButton,
-    Button,
     useColorMode,
     Table,
     Thead,
@@ -21,8 +19,8 @@ import {
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons'
 import { Container } from '../components/Container'
 import { Header } from '../components/Header'
-import { Link } from "react-router-dom"
 import axios from "axios"
+import Cookies from "js-cookie";
 
 const RequestsTableItem = (props) => {
     const toast = useToast();
@@ -35,8 +33,8 @@ const RequestsTableItem = (props) => {
         setIsLoadingAccept(true)
         axios.request({
             method:'POST',
-            url: `http://localhost:4000/api/v1/requests/${props.request.id}/accept`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzc0NzM1M30.iGp3F7CvLV-0B_BCHGeSwkgkq5wYNua42WSMTzD5_z8'},
+            url: `${process.env.REACT_APP_API_URL}requests/${props.request.id}/accept`,
+            headers:{'auth-token':Cookies.get('user')},
             data:  {}
         }).then(res => {
             console.log(res);
@@ -69,8 +67,8 @@ const RequestsTableItem = (props) => {
         setIsLoadingDecline(true)
         axios.request({
             method:'POST',
-            url: `http://localhost:4000/api/v1/requests/${props.request.id}/decline`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzc0NzM1M30.iGp3F7CvLV-0B_BCHGeSwkgkq5wYNua42WSMTzD5_z8'},
+            url: `${process.env.REACT_APP_API_URL}requests/${props.request.id}/decline`,
+            headers:{'auth-token':Cookies.get('user')},
             data:  {}
         }).then(res => {
             console.log(res);
@@ -137,8 +135,8 @@ const Request= () => {
     useEffect(() => {
         axios.request({
             method:'GET',
-            url: `http://localhost:4000/api/v1/requests`,
-            headers:{'auth-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyODI3ZDg3LWNiZTYtNDFlNS04NGY5LWMwYTYyN2U3NTlhNCIsInVzZXJuYW1lIjoiZ2RlYW5hbnRoYSIsImlhdCI6MTYzNzc0NzM1M30.iGp3F7CvLV-0B_BCHGeSwkgkq5wYNua42WSMTzD5_z8'},
+            url: `${process.env.REACT_APP_API_URL}requests`,
+            headers:{'auth-token':Cookies.get('user')},
             data:{}
         }).then(res => {
             const resRequests = res.data;
@@ -152,7 +150,7 @@ const Request= () => {
         setRefreshTable(!refreshTable);
     }
 
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode } = useColorMode()
     const isDark = colorMode === 'dark'
     return(
     <Container>
