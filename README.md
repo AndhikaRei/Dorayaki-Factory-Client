@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dorayaki-Factory-Client
+## Semester I Tahun 2021/2022 
+### Tugas Besar II IF3110 Milestone 2 Pengembangan Aplikasi Berbasis Web
 
-## Available Scripts
+*Program Studi Teknik Informatika* <br />
+*Sekolah Teknik Elektro dan Informatika* <br />
+*Institut Teknologi Bandung* <br />
 
-In the project directory, you can run:
+*Semester I Tahun 2021/2022*
 
-### `yarn start`
+## Deskripsi
+Dorayaki-Factory-Client merupakan Web App berbasis React yang menyediakan layanan frontend untuk pabrik dorayaki. Dorayaki-Factory-Client dibangun dengan development server create-react-app.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Fungsional Aplikasi
+1. Melakukan registrasi dan login user
+2. Mengelola bahan baku pabrik
+3. Mengelola resep dorayaki
+4. Mengelola request penambahan stok
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Author
+1. Gde Anantha Priharsena (13519026)
+2. Reihan Andhika Putra (13519043)
+3. Reyhan Emyr Arrosyid (13519167)
 
-### `yarn test`
+## Requirements
+- [ReactJS](https://reactjs.org/docs/getting-started.html)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Cara menjalankan
+1. Download dan install semua requirement yang dibutuhkan
+2. Clone repository ini
+3. Ketikkan command 
+```
+npm install
+npm start
+```
 
-### `yarn build`
+## Screenshot
+### Autentikasi
+![Login](screenshot/Login.png)
+![Register](screenshot/Register.png)
+### Halaman Utama
+![Dark Mode](screenshot/Dark_Mode.png)
+![Light Mode](screenshot/Light_Mode.png)
+### Resep di Pabrik
+![Daftar Resep](screenshot/Daftar_Recipe.png)
+![Detail Resep](screenshot/Detail_Recipe.png)
+![Tambah Resep](screenshot/Add_Recipe.png)
+### Bahan Baku di Pabrik
+![Daftar Bahan Baku](screenshot/Daftar_Bahan_Baku.png)
+![Ubah Bahan Baku](screenshot/Edit_Bahan_Baku.png)
+### Daftar Request
+![Daftar Request](screenshot/Daftar_Request.png)
+![Accept Request](screenshot/Accept_Request.png)
+![Decline Request](screenshot/Decline_Request.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Pembagian Tugas
+1. Frontend Pabrik Halaman Login : 13519026
+2. Frontend Pabrik Halaman Register : 13519026
+3. Frontend Pabrik Halaman Utama : 13519026
+4. Frontend Pabrik Halaman Resep : 13519026
+5. Frontend Pabrik Halaman Bahan Baku : 13519167
+6. Frontend Pabrik Halaman Request : 13519026
