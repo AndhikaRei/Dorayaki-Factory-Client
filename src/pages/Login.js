@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
     Text,
     Box,
@@ -22,8 +22,10 @@ import { BsPersonFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import Cookies from "js-cookie";
+import AuthApi from "../AuthApi";
 
 const Login = () => {
+    const Auth = useContext(AuthApi);
     const toast = useToast();
     const navigate = useNavigate();
     const { colorMode, toggleColorMode } = useColorMode()
@@ -45,6 +47,7 @@ const Login = () => {
         }).then(res => {
             Cookies.set('user', res.data.token);
             setIsLoading(false)
+            Auth.setAuth(true);
             navigate('/')
         }).catch((err)=>{
             setIsLoading(false)

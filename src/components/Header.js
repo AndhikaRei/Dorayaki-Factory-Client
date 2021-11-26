@@ -1,34 +1,37 @@
 import { useColorMode, Switch, Flex, Button, Icon, Spacer, Text, IconButton } from '@chakra-ui/react'
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext} from 'react'
 import { HamburgerIcon, CloseIcon} from '@chakra-ui/icons'
 import { Link, useNavigate} from "react-router-dom"
 import Cookies from "js-cookie";
 import { decodeToken } from "react-jwt";
+import AuthApi from "../AuthApi";
 
 export const Header = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
-  const navigate = useNavigate();
-  const isDark = colorMode === 'dark'
-  const bgHeaderColor = { light: 'white', dark: 'black' }
-  const [display, changeDisplay] = useState("none")
-  const [username, setUsername] = useState('')
+    const Auth = useContext(AuthApi);
+    const { colorMode, toggleColorMode } = useColorMode()
+    const navigate = useNavigate();
+    const isDark = colorMode === 'dark'
+    const bgHeaderColor = { light: 'white', dark: 'black' }
+    const [display, changeDisplay] = useState("none")
+    const [username, setUsername] = useState('')
 
-  function handleLogout(){
-    Cookies.remove('user');
-    navigate('/login')
-  }
+    function handleLogout(){
+        Cookies.remove('user');
+        Auth.setAuth(false);
+        navigate('/login')
+    }
 
-  useEffect(()=>{
-        if(Cookies.get('user')){
-            const user = Cookies.get('user');
-            const myDecodedToken = decodeToken(user);
-            setUsername(myDecodedToken.username);
-        }else{
-            setUsername('kak seto');
-        }
-    
-    }, []);
-  return (
+    useEffect(()=>{
+            if(Cookies.get('user')){
+                const user = Cookies.get('user');
+                const myDecodedToken = decodeToken(user);
+                setUsername(myDecodedToken.username);
+            }else{
+                setUsername('kak seto');
+            }
+        
+        }, []);
+    return (
     <Flex flexDir={"column"} width="100%" >
         <Flex 
         width="100%" 

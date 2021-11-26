@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import "@fontsource/poppins/400.css"
 import "@fontsource/open-sans/700.css"
 import {
   ChakraProvider,
 } from '@chakra-ui/react';
-import {Routes, Route, BrowserRouter as Router, Redirect} from "react-router-dom"
+import {Routes, Route, BrowserRouter as Router, Navigate, Outlet} from "react-router-dom"
 import theme from "./theme";
 import Index from "./pages/Index"
 import Recipes from "./pages/Recipes"
@@ -14,29 +14,72 @@ import Requests from "./pages/Requests"
 import Ingredient from "./pages/Ingredient"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Cookies from "js-cookie";
+import AuthApi from './AuthApi';
+
 function App() {
+  const [auth, setAuth] = useState(false)
+
+  const ReadCookies = () => {
+      const user = Cookies.get("user");
+      if(user){
+          setAuth(true);
+      }
+  }
+
+  useEffect(()=>{
+      ReadCookies();
+  }, []);
+
   return (
-    <Router>
-      <ChakraProvider theme={theme}>
-        <Navigation />
-      </ChakraProvider>
-    </Router>
+    <AuthApi.Provider value={{auth, setAuth}}>
+      <Router>
+        <ChakraProvider theme={theme}>
+          <Navigation />
+        </ChakraProvider>
+      </Router>
+    </AuthApi.Provider>
   );
 }
 
 const Navigation = () => {
   return(
     <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/recipes" element={<Recipes/>} />
-      <Route path="/recipe" element={<Recipe/>} />
-      <Route path="/add-recipe" element={<RecipeForm />} />
-      <Route path="/ingredients" element={<Ingredient />} />
-      <Route path="/requests" element={<Requests />} />
+      <Route exact path='/' element={<ProtectedRoute/>}>
+        <Route exact path='/' element={<Index />}/>
+      </Route>
+      <Route exact path='/login' element={<ProtectedAuth/>}>
+        <Route exact path='/login' element={<Login />}/>
+      </Route>
+      <Route exact path='/register' element={<ProtectedAuth/>}>
+        <Route exact path='/register' element={<Register />}/>
+      </Route>
+      <Route exact path='/recipes' element={<ProtectedRoute/>}>
+        <Route exact path='/recipes' element={<Recipes />}/>
+      </Route>
+      <Route exact path='/recipe' element={<ProtectedRoute/>}>
+        <Route exact path='/recipe' element={<Recipe />}/>
+      </Route>
+      <Route exact path='/add-recipe' element={<ProtectedRoute/>}>
+        <Route exact path='/add-recipe' element={<RecipeForm />}/>
+      </Route>
+      <Route exact path='/ingredients' element={<ProtectedRoute/>}>
+        <Route exact path='/ingredients' element={<Ingredient/>}/>
+      </Route>
+      <Route exact path='/requests' element={<ProtectedRoute/>}>
+        <Route exact path='/requests' element={<Requests/>}/>
+      </Route>
     </Routes>
   )
 }
+
+const ProtectedRoute = ({ element : Element, ...rest}) => {
+  const Auth = useContext(AuthApi)
+  return Auth.auth ? <Outlet /> : <Navigate to="/login" />;
+}
+const ProtectedAuth = ({ element : Element, ...rest}) => {
+  const Auth = useContext(AuthApi)
+  return !Auth.auth ? <Outlet /> : <Navigate to="/" />;
+}  
 
 export default App;
