@@ -28,7 +28,8 @@ Dorayaki-Factory-Client merupakan Web App berbasis React yang menyediakan layana
 ## Cara menjalankan
 1. Download dan install semua requirement yang dibutuhkan
 2. Clone repository ini
-3. Ketikkan command 
+3. Buat file .env berdasarkan .env.example dan modifikasi api url dengan format "http://localhost:<port>/api/v1/"
+4. Ketikkan command  
 ```
 npm install
 npm start
